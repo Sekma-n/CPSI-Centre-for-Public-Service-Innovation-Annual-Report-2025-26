@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPSI Annual Report 2025/26 · Redesigned slides</title>
+  <!-- Google Fonts for clean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for subtle icons (optional but adds polish) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef0f3; /* soft neutral background */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .deck {
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* --- slide base --- */
+    .slide {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.02);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.005);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    /* slide inner content */
+    .slide-content {
+      padding: 2rem 2.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #1B2A41;
+    }
+
+    .text-accent {
+      color: #C8A44B; /* gold accent */
+    }
+
+    .text-navy {
+      color: #1B2A41;
+    }
+
+    /* --- global footer --- */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #7b8a9b;
+      border-top: 1px solid #e5e9f0;
+      padding-top: 0.9rem;
+      margin-top: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer i {
+      font-size: 0.75rem;
+      color: #C8A44B;
+    }
+
+    /* --- COVER SLIDE (slide 1) --- */
+    .cover {
+      background: #1B2A41; /* deep navy */
+      color: white;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1B2A41 0%, #253b5c 100%);
+      z-index: 0;
+    }
+
+    .cover-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" opacity="0.06"><path fill="white" d="M0 0h1000v600H0z"/><circle cx="200" cy="150" r="80" fill="white"/><circle cx="800" cy="500" r="120" fill="white"/><circle cx="500" cy="300" r="180" fill="white"/></svg>');
+      background-size: cover;
+      opacity: 0.15;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 3rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cover-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: #C8A44B;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .cover-sub {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .cover-date {
+      font-size: 0.95rem;
+      font-weight: 300;
+      border-left: 4px solid #C8A44B;
+      padding-left: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .cover-footer {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* --- CONTENT / AT A GLANCE (slide 2) --- */
+    .glance-grid {
+      display: flex;
+      gap: 2.5rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .glance-left {
+      flex: 1.2;
+    }
+
+    .glance-left h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: #1B2A41;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .toc-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+      color: #2c3e50;
+      font-weight: 500;
+    }
+
+    .toc-list li i {
+      color: #C8A44B;
+      width: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .toc-list li span {
+      margin-left: auto;
+      color: #7b8a9b;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+
+    .glance-right {
+      flex: 0.9;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: #f4f5f7;
+      border-radius: 18px;
+      padding: 1.4rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-bottom: 4px solid #C8A44B;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1B2A41;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #5e6f82;
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+
+    /* --- SECTION DIVIDER (Part A–F and notes) --- */
+    .section-divider {
+      background: #ffffff;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+    }
+
+    .ghost-number {
+      font-size: 12rem;
+      font-weight: 800;
+      color: #1B2A41;
+      opacity: 0.06;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -0.05em;
+    }
+
+    .divider-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 70%;
+      margin-left: 5rem;
+    }
+
+    .divider-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #C8A44B;
+      text-transform: uppercase;
+    }
+
+    .divider-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1B2A41;
+      line-height: 1.1;
+    }
+
+    .divider-desc {
+      font-size: 1rem;
+      color: #5e6f82;
+      margin-top: 0.3rem;
+      font-weight: 400;
+      max-width: 500px;
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 2rem;
+      left: 2.5rem;
+      right: 2.5rem;
+      height: 5px;
+      background: #e5e9f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #C8A44B;
+      border-radius: 10px;
+      width: 16.6%; /* 1/6 */
+      transition: width 0.3s;
+    }
+
+    /* specific progress for each divider */
+    .progress-part-a .progress-fill { width: 16.6%; }
+    .progress-part-b .progress-fill { width: 33.3%; }
+    .progress-part-c .progress-fill { width: 50%; }
+    .progress-part-d .progress-fill { width: 66.6%; }
+    .progress-part-e .progress-fill { width: 83.3%; }
+    .progress-part-f .progress-fill { width: 100%; }
+
+    /* --- THANK YOU SLIDE (slide 10) --- */
+    .thankyou {
+      background: #ffffff;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .thankyou-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .thankyou h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #1B2A41;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .thankyou p {
+      font-size: 1.1rem;
+      color: #5e6f82;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .thankyou-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: #C8A44B;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .thankyou-contact {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      color: #5e6f82;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .thankyou-contact i {
+      color: #C8A44B;
+      margin-right: 0.4rem;
+    }
+
+    .thankyou-bar {
+      width: 100%;
+      height: 8px;
+      background: #C8A44B;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* utility */
+    .flex-spacer {
+      flex: 1;
+    }
+
+    .note {
+      font-size: 0.7rem;
+      color: #a0aec0;
+      margin-top: 0.5rem;
+    }
+
+    /* responsiveness */
+    @media (max-width: 800px) {
+      .slide-content { padding: 1.5rem; }
+      .glance-grid { flex-direction: column; }
+      .divider-title { font-size: 2rem; }
+      .ghost-number { font-size: 8rem; }
+      .cover-title { font-size: 2.2rem; }
+      .divider-content { margin-left: 2rem; }
+      .thankyou h2 { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide cover">
+      <div class="cover-bg"></div>
+      <div class="cover-content">
+        <div class="cover-logo">CPSI · Centre for Public Service Innovation</div>
+        <div>
+          <div class="cover-title">Annual Report<br>2025/26</div>
+          <div class="cover-sub">Centre for Public Service Innovation</div>
+          <div class="cover-date">For the year ended 31 March 2026</div>
+        </div>
+        <div class="cover-footer">
+          <span>Official annual report · PFMA framework</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: AT A GLANCE / CONTENTS -->
+    <div class="slide">
+      <div class="slide-content">
+        <div class="glance-grid">
+          <div class="glance-left">
+            <h2>At a glance</h2>
+            <ul class="toc-list">
+              <li><i class="fas fa-circle"></i> Notes to the AFS <span>p.3</span></li>
+              <li><i class="fas fa-circle"></i> Part A: General Information <span>p.4</span></li>
+              <li><i class="fas fa-circle"></i> Part B: Performance Information <span>p.5</span></li>
+              <li><i class="fas fa-circle"></i> Part C: Governance <span>p.6</span></li>
+              <li><i class="fas fa-circle"></i> Part D: Human Resource Management <span>p.7</span></li>
+              <li><i class="fas fa-circle"></i> Part E: PFMA Compliance Report <span>p.8</span></li>
+              <li><i class="fas fa-circle"></i> Part F: Financial Information <span>p.9</span></li>
+            </ul>
+          </div>
+          <div class="glance-right">
+            <div class="stat-card">
+              <div class="stat-number">12</div>
+              <div class="stat-label">Innovation projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Budget utilisation</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Awards won</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Governance committees</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="footer-left"><i class="fas fa-file-alt"></i> CPSI Annual Report 2025/26</div>
+          <div>1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: NOTES TO AFS (section divider style) -->
+    <div class="slide section-divider progress-part-a" style="--progress: 0;">
+      <div class="ghost-number">N</div>
+      <div class="divider-content">
+        <div class="divider-label">Section</div>
+        <div class="divider-title">Notes to the Annual<br>Financial Statements</div>
+        <div class="divider-desc">For the year ended 31 March 2026</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-file-invoice"></i> CPSI Annual Report 2025/26</div>
+        <div>2</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: PART A -->
+    <div class="slide section-divider progress-part-a">
+      <div class="ghost-number">A</div>
+      <div class="divider-content">
+        <div class="divider-label">Part A</div>
+        <div class="divider-title">General Information</div>
+        <div class="divider-desc">Mandate, vision, mission and legislative framework</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-info-circle"></i> CPSI Annual Report 2025/26</div>
+        <div>3</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: PART B -->
+    <div class="slide section-divider progress-part-b">
+      <div class="ghost-number">B</div>
+      <div class="divider-content">
+        <div class="divider-label">Part B</div>
+        <div class="divider-title">Performance Information</div>
+        <div class="divider-desc">Achievements against predetermined objectives</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-chart-line"></i> CPSI Annual Report 2025/26</div>
+        <div>4</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: PART C -->
+    <div class="slide section-divider progress-part-c">
+      <div class="ghost-number">C</div>
+      <div class="divider-content">
+        <div class="divider-label">Part C</div>
+        <div class="divider-title">Governance</div>
+        <div class="divider-desc">Board composition, committees and compliance</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-gavel"></i> CPSI Annual Report 2025/26</div>
+        <div>5</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: PART D -->
+    <div class="slide section-divider progress-part-d">
+      <div class="ghost-number">D</div>
+      <div class="divider-content">
+        <div class="divider-label">Part D</div>
+        <div class="divider-title">Human Resource Management</div>
+        <div class="divider-desc">Staffing, equity and development</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-users"></i> CPSI Annual Report 2025/26</div>
+        <div>6</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: PART E -->
+    <div class="slide section-divider progress-part-e">
+      <div class="ghost-number">E</div>
+      <div class="divider-content">
+        <div class="divider-label">Part E</div>
+        <div class="divider-title">PFMA Compliance Report</div>
+        <div class="divider-desc">Statutory compliance and irregular expenditure</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-check-circle"></i> CPSI Annual Report 2025/26</div>
+        <div>7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: PART F -->
+    <div class="slide section-divider progress-part-f">
+      <div class="ghost-number">F</div>
+      <div class="divider-content">
+        <div class="divider-label">Part F</div>
+        <div class="divider-title">Financial Information</div>
+        <div class="divider-desc">Statement of financial position and notes</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="footer" style="position: absolute; bottom: 1rem; left: 2.5rem; right: 2.5rem;">
+        <div class="footer-left"><i class="fas fa-coins"></i> CPSI Annual Report 2025/26</div>
+        <div>8</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: THANK YOU -->
+    <div class="slide thankyou">
+      <div class="thankyou-content">
+        <div class="thankyou-logo">CPSI · Centre for Public Service Innovation</div>
+        <h2>Thank You</h2>
+        <p>Innovating for a better public service.</p>
+        <div class="thankyou-contact">
+          <span><i class="fas fa-globe"></i> www.cpsi.co.za</span>
+          <span><i class="fas fa-envelope"></i> info@cpsi.co.za</span>
+          <span><i class="fas fa-phone-alt"></i> +27 12 843 6000</span>
+        </div>
+      </div>
+      <div class="thankyou-bar"></div>
+      <div class="footer" style="position: absolute; bottom: 1.5rem; left: 2.5rem; right: 2.5rem; border-top: none;">
+        <div class="footer-left"><i class="fas fa-file-pdf"></i> Full report available online</div>
+        <div>9</div>
+      </div>
+    </div>
+
+  </div> <!-- end deck -->
+</body>
+</html>
